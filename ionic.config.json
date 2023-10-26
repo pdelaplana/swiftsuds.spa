@@ -1,0 +1,7 @@
+{
+  "name": "SwiftSuds",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react-vite"
+}
