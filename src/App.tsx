@@ -1,8 +1,11 @@
-import { IonApp, IonRouterOutlet, IonSplitPane, setupIonicReact } from '@ionic/react';
-import { IonReactRouter } from '@ionic/react-router';
-import { Redirect, Route } from 'react-router-dom';
-import Menu from './components/Menu';
-import Page from './pages/Page';
+import React from 'react';
+
+import { AuthenticatedTemplate, UnauthenticatedTemplate } from '@azure/msal-react';
+import {
+  IonApp,
+  setupIonicReact,
+} from '@ionic/react';
+
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -23,24 +26,38 @@ import '@ionic/react/css/display.css';
 /* Theme variables */
 import './theme/variables.css';
 
+/* Tailwind styles */
+import './theme/tailwind.css';
+
+
+
+import CustomerAppRouter from './pages/customer/CustomerAppRouter';
+import PublicAppRouter from './pages/public/PublicAppRouter';
+import { AuthProvider } from './providers/auth/AuthProvider';
+
+// eslint-disable-next-line import/order
+import type { IPublicClientApplication } from '@azure/msal-browser';
+
+
+interface AppProps {
+  msalInstance: IPublicClientApplication
+}
+
 setupIonicReact();
 
-const App: React.FC = () => {
+const App: React.FC<AppProps> = ({ msalInstance }) => {
+
   return (
     <IonApp>
-      <IonReactRouter>
-        <IonSplitPane contentId="main">
-          <Menu />
-          <IonRouterOutlet id="main">
-            <Route path="/" exact={true}>
-              <Redirect to="/folder/Inbox" />
-            </Route>
-            <Route path="/folder/:name" exact={true}>
-              <Page />
-            </Route>
-          </IonRouterOutlet>
-        </IonSplitPane>
-      </IonReactRouter>
+      <AuthProvider msalInstance={msalInstance}>
+        <AuthenticatedTemplate>
+          <CustomerAppRouter />
+        </AuthenticatedTemplate>
+        <UnauthenticatedTemplate>
+          <PublicAppRouter />
+        </UnauthenticatedTemplate>
+
+      </AuthProvider>
     </IonApp>
   );
 };

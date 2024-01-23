@@ -1,0 +1,5 @@
+ion-header{
+  border-bottom-style: inset;
+  border-bottom-color: var(--ion-color-medium);
+  border-bottom-width: thin;
+}
