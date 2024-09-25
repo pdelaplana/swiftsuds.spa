@@ -9,7 +9,6 @@ import type {
 import { EventType } from '@azure/msal-browser';
 import { MsalProvider, useMsal } from '@azure/msal-react';
 import type { AuthError } from 'msal';
-import { useHistory } from 'react-router';
 
 import { b2cPolicies, loginRequest, protectedResources } from './AuthConfig';
 import { compareIssuingPolicy } from '../../utils/claimsUtils';

@@ -1,0 +1,21 @@
+import { getAddressByLabel } from 'api/addresses/getAddressByLabel';
+import type { Address } from 'domain/entities';
+import type { FetchResult } from 'hooks/types';
+import { useQuery } from 'react-query';
+
+export const useFetchAddressByLabel = (label: string) : FetchResult<Address[]> => {
+  const result = useQuery([getAddressByLabel, label], () => getAddressByLabel(label), {
+    // Here you can add options such as refetchOnWindowFocus, staleTime, etc.
+    staleTime: 1000 * 60 * 5,  // Data is considered fresh for 5 minutes
+    onError: (err) => {
+      console.error('Error fetching user data:', err);
+    }
+  });
+
+  return {
+    data: result.data,
+    error: result.error,
+    isLoading: result.isFetching
+  };
+
+};

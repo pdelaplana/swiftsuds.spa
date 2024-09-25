@@ -17,7 +17,7 @@ import {
   IonRow,
   IonCol,
 } from '@ionic/react';
-import MainLogo from 'components/main-logo/MainLogo';
+import MainLogo from 'components/mainLogo/MainLogo';
 import { mailOutline,  personOutline, phonePortraitOutline } from 'ionicons/icons';
 
 const RegistrationPage: React.FC = () => {

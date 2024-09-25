@@ -3,11 +3,11 @@ import React, { useMemo } from "react";
 import type { AccountInfo } from "@azure/msal-browser";
 import { useMsal } from "@azure/msal-react";
 import { IonButton, IonItem, IonLabel, IonList, IonListHeader } from "@ionic/react";
-import AuthenticatedAppBasePage from "pages/AuthenticatedAppBasePage";
+import BottomContainer from 'components/layout/BottomContainer';
+import AuthenticatedPage from "pages/AuthenticatedPage";
 
 const UserProfilePage : React.FC = () => {
-  const { instance, inProgress } = useMsal();
-
+  const { instance } = useMsal();
 
   const { activeAccount, handleLogout } = useMemo(() => {
     return {
@@ -16,11 +16,8 @@ const UserProfilePage : React.FC = () => {
     };
   },[instance]);
 
-
-
-
   return(
-    <AuthenticatedAppBasePage title={"Your Account"} showProfileIcon={false} >
+    <AuthenticatedPage title={"Your Account"} showProfileIcon={false} >
       <IonListHeader className="ion-margin-top">Account</IonListHeader>
       <IonList>
         <IonItem lines={"full"}>
@@ -33,12 +30,13 @@ const UserProfilePage : React.FC = () => {
         </IonItem>
       </IonList>
 
-      <IonButton expand="full" className="ion-padding" onClick={handleLogout}>
+      <BottomContainer>
+        <IonButton expand="full" className="ion-padding" onClick={handleLogout}>
           Sign Out
         </IonButton>
+      </BottomContainer>
 
-
-    </AuthenticatedAppBasePage>
+    </AuthenticatedPage>
   );
 };
 

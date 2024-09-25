@@ -3,7 +3,7 @@ import React from 'react';
 import { AccountInfo } from '@azure/msal-browser';
 import { useMsal } from '@azure/msal-react';
 import { IonButton, IonCol, IonContent, IonIcon, IonPage, IonRouterLink, IonRow, IonText } from '@ionic/react';
-import MainLogo from 'components/main-logo/MainLogo';
+import MainLogo from 'components/mainLogo/MainLogo';
 import { loginRequest } from 'providers/auth/AuthConfig';
 
 import './WelcomePage.css';

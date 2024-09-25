@@ -1,3 +1,6 @@
+import { useState } from 'react';
+import React from 'react';
+
 import {
   IonPage,
   IonHeader,
@@ -17,9 +20,9 @@ import {
   IonBackButton,
 } from '@ionic/react';
 import { mailOutline, keyOutline } from 'ionicons/icons';
-import { useState } from 'react';
 
-import MainLogo from '../../../components/main-logo/MainLogo';
+
+import MainLogo from '../../../components/mainLogo/MainLogo';
 
 const LoginPage: React.FC = () => {
   const [pageTitle] = useState<string>('Login');

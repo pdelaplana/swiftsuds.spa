@@ -1,0 +1,10 @@
+
+.counter-value {
+  width: 30px;
+  height:30px;
+  font-size: 1.2em;
+  display: inline-block;
+  text-align: center;
+  vertical-align: sub;
+
+}

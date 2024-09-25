@@ -1,0 +1,67 @@
+ion-header{
+  border-bottom-style: inset;
+  border-bottom-color: var(--ion-color-light-shade);
+  border-bottom-width: thin;
+}
+
+ion-footer, ion-tab-bar {
+  border-top-style: outset;
+  border-top-color: var(--ion-color-light-shade);
+  border-top-width: thin;
+}
+
+ion-modal {
+  --max-height: 100%;
+  --max-width: 100%;
+  --background: transparent;
+  --border-radius: 5px;
+  --height: 100%;
+  --width: 100%;
+}
+
+.transparent-background {
+  --background: transparent;
+}
+
+.horizontal-scroller {
+  padding:10px;
+  width: 100%; /* or any specific width */
+  overflow-x: auto;
+  white-space: nowrap;
+
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Hide scrollbar for IE, Edge and Firefox */
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.scrollable-container{
+  height: 70dvh;
+  overflow-y:scroll;
+}
+
+.bottom-fixed{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  /* Additional styles for your fixed element */
+  background-color: #f8f9fa; /* Example background color */
+  text-align: center; /* Example text alignment */
+  padding: 10px 0; /* Example padding */
+}
+
+
+ion-list-header {
+  font-weight:550;
+  font-size: 0.98em;
+}
+
+ion-searchbar {
+  --box-shadow: none !important;
+
+}

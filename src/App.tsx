@@ -1,11 +1,8 @@
 import React from 'react';
 
 import { AuthenticatedTemplate, UnauthenticatedTemplate } from '@azure/msal-react';
-import {
-  IonApp,
-  setupIonicReact,
-} from '@ionic/react';
-
+// eslint-disable-next-line import/order
+import { IonApp, setupIonicReact } from '@ionic/react';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -29,11 +26,15 @@ import './theme/variables.css';
 /* Tailwind styles */
 import './theme/tailwind.css';
 
+import './globals.css';
 
+import { ShopProvider } from 'providers/shop/ShopProvider';
+import { QueryClient, QueryClientProvider } from 'react-query';
 
-import CustomerAppRouter from './pages/customer/CustomerAppRouter';
+import CustomerAppRouter from './customerApp/CustomerAppRouter';
 import PublicAppRouter from './pages/public/PublicAppRouter';
 import { AuthProvider } from './providers/auth/AuthProvider';
+import { CartProvider } from './providers/cart/CartProvider';
 
 // eslint-disable-next-line import/order
 import type { IPublicClientApplication } from '@azure/msal-browser';
@@ -47,18 +48,25 @@ setupIonicReact();
 
 const App: React.FC<AppProps> = ({ msalInstance }) => {
 
-  return (
-    <IonApp>
-      <AuthProvider msalInstance={msalInstance}>
-        <AuthenticatedTemplate>
-          <CustomerAppRouter />
-        </AuthenticatedTemplate>
-        <UnauthenticatedTemplate>
-          <PublicAppRouter />
-        </UnauthenticatedTemplate>
+  const queryClient = new QueryClient();
 
-      </AuthProvider>
-    </IonApp>
+  return (
+    <AuthProvider msalInstance={msalInstance}>
+      <QueryClientProvider client={queryClient}>
+        <ShopProvider>
+          <CartProvider>
+            <IonApp>
+              <AuthenticatedTemplate>
+                <CustomerAppRouter />
+              </AuthenticatedTemplate>
+              <UnauthenticatedTemplate>
+                <PublicAppRouter />
+              </UnauthenticatedTemplate>
+            </IonApp>
+          </CartProvider>
+        </ShopProvider>
+      </QueryClientProvider>
+    </AuthProvider>
   );
 };
 
