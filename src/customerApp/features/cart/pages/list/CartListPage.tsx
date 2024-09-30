@@ -1,10 +1,11 @@
 import React from 'react';
 
-import { IonButton, IonItem, IonLabel, IonList } from '@ionic/react';
+import { IonButton, IonItem, IonLabel, IonList, IonText } from '@ionic/react';
 import { BottomContainer, ScrollableContainer } from 'components/layout';
 import dayjs from 'dayjs';
 import { useCartOrderTotals } from 'hooks/cart/useCartOrderTotals';
 import { useCurrencyFormatter } from 'hooks/formatters/useCurrencyFormatter';
+import { useDateFormatter } from 'hooks/formatters/useDateFormatter';
 import AuthenticatedPage from 'pages/AuthenticatedPage';
 import { useCart } from 'providers/cart/CartProvider';
 
@@ -12,6 +13,7 @@ import { useCart } from 'providers/cart/CartProvider';
 const CartListPage: React.FC = () => {
   const { cartState, cartDispatch } = useCart();
   const { currencyFormatter } = useCurrencyFormatter();
+  const { dateFormatter } = useDateFormatter();
   const { calculateTotals } = useCartOrderTotals();
 
   const clearCart = () => {
@@ -25,9 +27,13 @@ const CartListPage: React.FC = () => {
           {cartState.orders.map(order =>
           <IonItem detail button routerLink={`/cart/${order.id}`}>
             <IonLabel>
-              <h2>{order.shopName}</h2>
-              <p>{`${dayjs(order.bookingDate).format('ddd')} ${dayjs(order.bookingDate).format('MMM DD')}`}</p>
-              <p>{currencyFormatter(calculateTotals(order).total)}</p>
+              <h2 color='dark'>{order.shopName}</h2>
+              <p>
+                <IonText color='medium'>
+                {dateFormatter(order.bookingDate)} &middot; {currencyFormatter(calculateTotals(order).total)}
+                </IonText>
+              </p>
+
             </IonLabel>
           </IonItem>
           )}

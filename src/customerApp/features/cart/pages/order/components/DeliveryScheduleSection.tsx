@@ -27,12 +27,18 @@ const DeliveryScheduleSection : React.FC<DeliveryScheduleSectionProps> = ({ orde
           <IonListHeader>Return On</IonListHeader>
           <IonItem button detail lines='full' onClick={() => onSelectDroppoffSchedule()}>
             <IonIcon slot='start' icon={timeOutline}></IonIcon>
+            { dropoffSchedule !== null ?
             <IonLabel>
-              <h2>{dropoffSchedule?.label ?? 'Select Dropoff Schedule'}</h2>
-              <p>{dropoffSchedule?.description ?? 'Select a Dropoff Schedule'}</p>
+              <h2>{dropoffSchedule.label}</h2>
+              <p>{dropoffSchedule.description }</p>
               <p>{currencyFormatter(dropoffSchedule?.cost)}</p>
-
             </IonLabel>
+            :
+            <IonLabel>
+              <h2>{'Schedule Dropoff'}</h2>
+              <p>{'Schedule return of your items'}</p>
+            </IonLabel>
+            }
           </IonItem>
 
        </IonList>

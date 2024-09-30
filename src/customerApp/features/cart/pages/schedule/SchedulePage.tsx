@@ -15,7 +15,7 @@ interface SchedulePageProps {
   mode: 'pickup' | 'dropoff';
 }
 
-const PickupSchedulePage: React.FC<SchedulePageProps> = ({ mode }) => {
+const SchedulePage: React.FC<SchedulePageProps> = ({ mode }) => {
   const { orderId } = useParams<{orderId:string}>();
   const { data: pickupOptions, isLoading: pickOptionsLoading } = useFetchPickupOptions('');
   const { data: dropoffOptions, isLoading: dropoffOptionsLoading } = useFetchDropoffOptions('');
@@ -128,4 +128,4 @@ const PickupSchedulePage: React.FC<SchedulePageProps> = ({ mode }) => {
   );
 };
 
-export default PickupSchedulePage;
+export default SchedulePage;

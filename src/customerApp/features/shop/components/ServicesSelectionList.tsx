@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { IonListHeader, IonList, IonItem, IonLabel, IonBadge, useIonModal, IonButton, IonIcon, IonSpinner } from '@ionic/react';
+import { IonListHeader, IonList, IonItem, IonLabel, IonBadge, useIonModal, IonButton, IonSpinner } from '@ionic/react';
 import type { OverlayEventDetail } from '@ionic/react/dist/types/components/react-component-lib/interfaces';
 import type { ServiceItem } from 'domain/entities/serviceItem';
 import { currencyFormatter } from 'utils/formatters';

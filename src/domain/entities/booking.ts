@@ -1,16 +1,29 @@
 import type { Address } from './address';
+import type { BookingItem } from './bookingItem';
+
+export type BookingStatus = 'BOOKED' | 'PICKEDUP' | 'INSHOP' | 'DISPATCHED' | 'COMPLETED';
 
 export interface Booking {
   id: string;
   refNo: number;
   shopId: string;
   shopName: string;
-  transporterId: string;
-  transporter: string;
   bookingDate: Date;
-  pickupDate: Date;
-  deliveryDate: Date;
-  totalCost: number;
+  pickupScheduledDate: Date;
+  pickupActualDate?: Date;
   pickupAddress: Address;
-  deliveryAddess: Address;
+  pickupFee: number;
+  pickupByCourierId: string;
+  pickupByCourier: string;
+  receivedInShopDate?: Date;
+  dispatchedFromShopDate?: Date;
+  deliveryScheduledDate?: Date;
+  deliveryActualDate?: Date;
+  deliveryAddess?: Address;
+  deliveryFee?: number;
+  deliveryByCourierId?: string;
+  deliveryByCourier?: string;
+  totalCost: number;
+  bookingItems: BookingItem[];
+  bookingStatus: BookingStatus;
 }

@@ -32,7 +32,7 @@ const CartButton : React.FC<CartButtonProps> = () => {
     const itemCount = count > 1 ? `${count} items` : `${count} item`;
     const totalPrice = currencyFormatter.format(totals);
     return { orderId, itemCount, totalPrice };
-  },[getCurrentOrder, shopState.shopId, shopState.shopName]);
+  },[getCurrentOrder, shopState]);
 
   return(
     <IonButton expand='full' className='ion-margin ' routerLink={`/cart/${orderId}`}>

@@ -7,6 +7,7 @@ import { animationBuilder } from 'utils/animationBuilder';
 
 import CustomerTabRoutes from './CustomerTabRoutes';
 import CartRoutes from './features/cart/CartRoutes';
+import OrderRoutes from './features/order/OrderRoutes';
 import ShopPage from './features/shop/ShopPage';
 import NotFoundPage from '../pages/NotFoundPage';
 
@@ -19,6 +20,9 @@ const CustomerRoutes: React.FC = () => {
         </Route>
         <Route path="/cart">
           <CartRoutes/>
+        </Route>
+        <Route path="/order" exact={false}>
+          <OrderRoutes  />
         </Route>
         <Route path="/shop/:shopId/services"  exact={false}>
           <ShopPage  />

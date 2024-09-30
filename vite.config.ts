@@ -32,7 +32,14 @@ export default defineConfig(({ mode }) => {
     ],
     define:{
       "process.env": JSON.stringify(envFile),
-    }
+    },
+    resolve: {
+      alias: {
+        '@api': '/src/api',
+        '@domain': '/src/domain',
+        // Add more aliases as needed
+      },
+    },
   };
 
 

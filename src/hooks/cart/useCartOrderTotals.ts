@@ -33,8 +33,8 @@ export const useCartOrderTotals = () : { calculateTotals: (order:CartOrder) => C
         subtotal += item.price * item.quantity;
       });
 
-      pickupFee = order.pickupSchedule.cost;
-      deliveryFee = order.dropoffSchedule.cost;
+      pickupFee = order.pickupSchedule?.cost ?? 0;
+      deliveryFee = order.dropoffSchedule?.cost ?? 0;
 
       total = (subtotal + tax + pickupFee + deliveryFee) - discount;
 

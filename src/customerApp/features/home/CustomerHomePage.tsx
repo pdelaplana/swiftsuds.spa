@@ -73,13 +73,11 @@ const CustomerHomePage: React.FC = () => {
           </IonItem>
         }
         {recentBookings?.map((booking) => (
-          <IonItem lines={'full'} button={true} detail={true} routerLink='/shop/services'>
+          <IonItem lines={'full'} button={true} detail={true} routerLink={`/order/${booking.id }`}>
           <IonLabel>
-            <h2><strong> Order #{booking.refNo} </strong></h2>
-            <p>{booking.shopName}</p>
-            <p>{ dateFormatter.format(booking.bookingDate)} </p>
+            <h2>{booking.shopName}</h2>
+            <p color='dark'>{ dateFormatter.format(booking.bookingDate) } - {currencyFormatter.format(booking.totalCost)} </p>
           </IonLabel>
-          <IonLabel slot='end'><strong>{currencyFormatter.format(booking.totalCost)}</strong></IonLabel>
         </IonItem>
         ))}
       </IonList>

@@ -7,7 +7,7 @@ import AddressDetailsPage from './pages/addresses/AddressDetailsPage';
 import AddressSelectionPage from './pages/addresses/AddressSelectionPage';
 import CartListPage from './pages/list/CartListPage';
 import CartOrderPage from './pages/order/CartOrderPage';
-import PickupSchedulePage from './pages/pickup/PickupSchedulePage';
+import SchedulePage from './pages/schedule/SchedulePage';
 import TimeSlotsSelectionPage from './pages/timeslots/TimeSlotsSelectionPage';
 
 const CartRoutes: React.FC = () => {
@@ -39,10 +39,10 @@ const CartRoutes: React.FC = () => {
         <TimeSlotsSelectionPage mode='dropoff' />
       </Route>
       <Route path="/cart/:orderId/schedule/pickup" exact={true}>
-        <PickupSchedulePage mode='pickup' />
+        <SchedulePage mode='pickup' />
       </Route>
       <Route path="/cart/:orderId/schedule/dropoff" exact={true}>
-        <PickupSchedulePage mode='dropoff' />
+        <SchedulePage mode='dropoff' />
       </Route>
 
 
