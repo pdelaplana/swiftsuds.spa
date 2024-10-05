@@ -1,8 +1,28 @@
+@media (min-width: 700px) {
+  ion-app {
+    width: 700px;
+    margin: auto;
+    position: relative;
+
+    border-style: outset;
+    border-color: var(--ion-color-light-shade);
+    border-width: thin;
+  }
+
+  .scroll-content {
+    overflow-y:auto;
+  }
+}
+
+
 ion-header{
   border-bottom-style: inset;
   border-bottom-color: var(--ion-color-light-shade);
   border-bottom-width: thin;
+
 }
+
+
 
 ion-footer, ion-tab-bar {
   border-top-style: outset;
@@ -19,8 +39,11 @@ ion-modal {
   --width: 100%;
 }
 
-.transparent-background {
-  --background: transparent;
+ion-card.outline{
+  box-shadow:none;
+  border-style: solid;
+  border-color: var(--ion-color-light-shade);
+  border-width: thin;
 }
 
 .horizontal-scroller {

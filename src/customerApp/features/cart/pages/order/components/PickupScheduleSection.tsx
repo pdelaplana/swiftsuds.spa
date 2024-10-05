@@ -1,7 +1,6 @@
 import React, { useMemo } from 'react';
 
 import { IonList, IonListHeader, IonItem, IonIcon, IonLabel } from '@ionic/react';
-import type { PickupSchedule } from 'domain/valueTypes/pickupOption';
 import { useCurrencyFormatter } from 'hooks/formatters/useCurrencyFormatter';
 import { useNavigator } from 'hooks/useNavigator';
 import { timeOutline } from 'ionicons/icons';

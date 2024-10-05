@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 
-import { IonListHeader, IonList, IonItem, IonLabel, IonBadge, useIonModal, IonButton, IonSpinner } from '@ionic/react';
+import { IonListHeader, IonList, IonItem, IonLabel, IonBadge, useIonModal, IonButton, IonRow, IonIcon } from '@ionic/react';
 import type { OverlayEventDetail } from '@ionic/react/dist/types/components/react-component-lib/interfaces';
+import PageSpinner from 'components/ui/PageSpinner';
 import type { ServiceItem } from 'domain/entities/serviceItem';
+import { addCircleOutline } from 'ionicons/icons';
 import { currencyFormatter } from 'utils/formatters';
 
 import ServiceDetailsModal from './ServiceDetailsModal';
@@ -38,28 +40,27 @@ export const ServicesSelectionList : React.FC<ServicesSelectionListProps> = ({ s
 
   return(
     <>
-      <IonListHeader>Services Offered </IonListHeader>
-      <IonList>
-      {isFetching &&
-          <IonItem lines={'none'}  className='ion-text-center'>
-            <IonLabel><IonSpinner name='dots'/></IonLabel>
-          </IonItem>
-        }
-      {services?.map(service => (
+      <PageSpinner isSpinning={isFetching} />
+      { !isFetching &&
+        <>
+        <IonListHeader>Choose Services</IonListHeader>
+        <IonList>
+        { !isFetching && services?.map(service => (
         <IonItem key={service.id} lines='full'>
-          <IonLabel >
+          <IonLabel>
             <h2>{service.name}</h2>
             <p>
               {service.description}
             </p>
             <small>Price per Weight - {currencyFormatter.format(service.price)}</small>
-            <div className='ion-margin-top'>{service.tags.map(tag => <IonBadge key={tag} className='ion-margin-end'>{tag}</IonBadge>)}</div>
+            <IonRow className='ion-margin-top '>{service.tags.map(tag => <IonBadge color='light' key={tag} style={{'marginRight':'3px'}}>{tag}</IonBadge>)}</IonRow>
           </IonLabel>
-          <IonButton size='default' fill='outline' onClick={() => openModal(service)}>Add</IonButton>
+          <IonButton slot='end' size='default' fill='clear' onClick={() => openModal(service)}><IonIcon icon={addCircleOutline} size='large'></IonIcon></IonButton>
         </IonItem>
-
-      ))}
-      </IonList>
+        ))}
+        </IonList>
+      </>
+      }
     </>
   );
 };

@@ -14,16 +14,16 @@ import {
 import { cartOutline, personOutline } from 'ionicons/icons';
 import './AuthenticatedPage.css';
 import { useCart } from 'providers/cart/CartProvider';
-import { useShop } from 'providers/shop/ShopProvider';
 
 interface AuthenticatedPageProps {
-	title: string;
-  showProfileIcon: boolean;
+	title?: string;
+  showHeader?: boolean;
+  showProfileIcon?: boolean;
 	children: React.ReactNode;
   defaultBackButtonHref?: string;
 }
 
-const AuthenticatedPage: React.FC<AuthenticatedPageProps> = ({ title, children, showProfileIcon=true, defaultBackButtonHref }) => {
+const AuthenticatedPage: React.FC<AuthenticatedPageProps> = ({ title='', children, showHeader=true, showProfileIcon=true, defaultBackButtonHref }) => {
   const { cartState } = useCart();
 
   const memoizedItemCount = useMemo(() => {
@@ -42,8 +42,8 @@ const AuthenticatedPage: React.FC<AuthenticatedPageProps> = ({ title, children, 
     );
 
 	return (
-		<IonPage >
-			<IonHeader className='ion-no-border'>
+		<IonPage>
+			<IonHeader className='ion-no-border' hidden={!showHeader} >
 				<IonToolbar>
 					<IonButtons slot='start'>
 						<IonBackButton defaultHref={defaultBackButtonHref} />
@@ -63,7 +63,7 @@ const AuthenticatedPage: React.FC<AuthenticatedPageProps> = ({ title, children, 
 				</IonToolbar>
 			</IonHeader>
 
-			<IonContent >
+			<IonContent>
 				{children}
 			</IonContent>
 		</IonPage>

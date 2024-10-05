@@ -2,8 +2,8 @@ import { useState } from 'react';
 
 import { useIonModal } from '@ionic/react';
 import type { OverlayEventDetail } from '@ionic/react/dist/types/components/react-component-lib/interfaces';
+import PickupScheduleModal from 'customerApp/features/cart/pages/schedule/SchedulePage';
 import type { PickupTimeSlot } from 'domain/valueTypes/pickupOption';
-import PickupScheduleModal from 'customerApp/features/cart/pickup/PickupScheduleModal';
 
 export const usePickupScheduleModal = () : { open: (selectedPickupDate: Date, selectedPickupTimeSlot: PickupTimeSlot, timeslots: PickupTimeSlot[]) => Promise<any> } => {
   const [pickupDate, setPickupDate] = useState<Date>(new Date());

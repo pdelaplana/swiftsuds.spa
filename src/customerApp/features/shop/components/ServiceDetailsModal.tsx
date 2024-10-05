@@ -1,9 +1,21 @@
 import React, { useState } from 'react';
 
-import { IonListHeader, IonList, IonItem, IonLabel, IonBadge, IonButton, IonPage, IonButtons, IonHeader, IonToolbar, IonContent, IonTextarea } from '@ionic/react';
-import Counter from 'components/counter/counter';
+import {
+  IonListHeader,
+  IonList,
+  IonItem,
+  IonLabel,
+  IonBadge,
+  IonButton,
+  IonPage,
+  IonButtons,
+  IonHeader,
+  IonToolbar,
+  IonContent,
+  IonTextarea } from '@ionic/react';
 import { BottomContainer } from 'components/layout';
 import ScrollableContainer from 'components/layout/ScrollableContainer';
+import Counter from 'components/ui/counter/counter';
 import type { ServiceItem } from 'domain/entities/serviceItem';
 import { useFetchLaundryItems } from 'hooks/shops';
 import { useCart } from 'providers/cart/CartProvider';
@@ -30,10 +42,10 @@ const ServiceDetailsModal : React.FC<ServiceDetailsModalProps> = ({ shopid, serv
   const { cartDispatch, getCurrentOrder } = useCart();
 
   const addToCart = (orderItem: CartOrderItem) =>{
-    console.log('Add to Cart', shopid);
+
     let order = getCurrentOrder(shopState.shopId);
     if (!order) {
-      console.log('No Order');
+
       order = {
         id: uuidv4(),
         shopId: shopState.shopId,
@@ -47,7 +59,7 @@ const ServiceDetailsModal : React.FC<ServiceDetailsModalProps> = ({ shopid, serv
       };
       cartDispatch({type: 'ADD_ORDER', payload: order});
     }
-    console.log('Current Order', order);
+
     orderItem.orderId = order.id;
     cartDispatch({ type: 'ADD_ORDER_ITEM', payload: orderItem });
     onDismiss('', 'addToCart');
@@ -89,7 +101,6 @@ const ServiceDetailsModal : React.FC<ServiceDetailsModalProps> = ({ shopid, serv
               <IonLabel slot='start'>
                 {laundryItem.description}
               </IonLabel>
-
               <div slot='end' >
                 <Counter  onUpdate={(value) => console.log(value)}/>
               </div>

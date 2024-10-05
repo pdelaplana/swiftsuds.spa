@@ -1,8 +1,17 @@
+import type { OperatingHours } from '@domain/valueTypes/operatingHours';
+
+import type { Address } from './address';
+
 export interface Shop {
   id: string;
   name: string;
   description: string;
-  rating: number;
+  averageRating: number;
+  totalRatingsCount: number;
   logoUrl: string;
-  city:string;
+  website: string;
+  phone: string;
+  email: string;
+  operatingHours: OperatingHours[];
+  address: Address;
 }

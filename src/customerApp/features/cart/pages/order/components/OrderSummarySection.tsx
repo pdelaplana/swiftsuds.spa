@@ -1,7 +1,7 @@
 import React  from 'react';
 
 import { IonItem, IonLabel, IonList, IonListHeader } from '@ionic/react';
-import Counter from 'components/counter/counter';
+import Counter from 'components/ui/counter/counter';
 import { useCurrencyFormatter } from 'hooks/formatters/useCurrencyFormatter';
 import { useCart } from 'providers/cart/CartProvider';
 import type { CartOrder } from 'providers/cart/cartTypes';

@@ -47,7 +47,8 @@ const OrderDetailsPage : React.FC = () => {
   return (
     <AuthenticatedPage title={''} showProfileIcon={false} defaultBackButtonHref='/'>
       <PageSpinner isSpinning={isLoading} />
-      { booking &&
+      { error && <IonText color='danger'>Something went wrong.  Please try again.  </IonText> }
+      { booking && !isLoading &&
       <ScrollableContainer height='100%'>
         <div className='ion-padding'>
           <h2>{currentOrderStatus}</h2>

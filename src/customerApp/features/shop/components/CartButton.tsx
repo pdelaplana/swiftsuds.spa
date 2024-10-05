@@ -16,10 +16,9 @@ const CartButton : React.FC<CartButtonProps> = () => {
   const { getCurrentOrder } = useCart();
 
   const { orderId, itemCount, totalPrice }  = useMemo(() => {
-    console.log('CartButton',shopState.shopId, shopState.shopName);
-    console.log('shopState',shopState);
+
     const currentOrder = getCurrentOrder(shopState.shopId);
-    console.log('CurrentOrder',currentOrder);
+
     if (!currentOrder) {
       return { orderId: '', itemCount: '0 items', totalPrice: currencyFormatter.format(0) };
     }
