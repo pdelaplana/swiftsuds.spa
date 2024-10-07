@@ -46,6 +46,20 @@ ion-card.outline{
   border-width: thin;
 }
 
+.ion-flex{
+  display: flex;
+}
+
+.ion-outline{
+  border-style: solid;
+  border-color: var(--ion-color-light-shade);
+  border-width: thin;
+}
+
+.ion-outline-nobottom{
+  border-bottom: 0px;
+}
+
 .horizontal-scroller {
   padding:10px;
   width: 100%; /* or any specific width */

@@ -17,8 +17,10 @@ import {
   IonSpinner,
   IonText,
 } from '@ionic/react';
-import ShopLogo from 'components/ui/ShopLogo';
 import ImageContainer from 'components/ui/ImageContainer';
+import ShopLogo from 'components/ui/ShopLogo';
+import ShopRatings from 'components/ui/ShopRatings';
+import { useAccountInfo } from 'hooks/accountInfo/useAccountInfo';
 import { useFetchRecentBookings } from 'hooks/bookings/useFetchRecentBookings';
 import { useFetchFavoriteShops } from 'hooks/shops/useFetchFavoriteShops';
 import { homeOutline, star } from 'ionicons/icons';
@@ -26,34 +28,18 @@ import AuthenticatedPage from 'pages/AuthenticatedPage';
 import { currencyFormatter, dateFormatter } from 'utils/formatters';
 
 import OrderStatusBar from '../order/pages/orderDetails/components/OrderStatusBar';
-import { I } from 'vitest/dist/types-198fd1d9';
-import ShopRatings from 'components/ui/ShopRatings';
+
 
 const CustomerHomePage: React.FC = () => {
-
   const { data: favoriteShops, isLoading: isFetchingShops } = useFetchFavoriteShops();
-
   const { data: recentBookings, isLoading: isFetchingRecentBookings } = useFetchRecentBookings('customerid');
+  const { name } = useAccountInfo();
 
 	return (
 		<AuthenticatedPage >
 
-      <IonCard button hidden>
-      <ImageContainer src="/resources/img/laundromat-1.jpg" text='SwiftSuds' />
-        <IonCardHeader>
-          <IonCardTitle>F</IonCardTitle>
-          <IonCardSubtitle>Active Order</IonCardSubtitle>
-          <p><IonText color='medium'>Mon, Jan 27 - PhP200</IonText></p>
-        </IonCardHeader>
-
-        <IonCardContent >
-          <OrderStatusBar bookingStatus='INSHOP'/>
-        </IonCardContent>
-      </IonCard>
-
-
-      <div  className='ion-padding' style={{ display: 'flex', alignItems: 'center', justifyContent:'space-between' }}>
-        <IonLabel color='dark'><h1>Welcome back, <br/> Mark</h1></IonLabel>
+      <div className='ion-padding ion-flex ion-align-items-center ion-justify-content-between' >
+        <IonLabel color='dark'><h1 >Welcome back, <br/> {name.split(' ')[0]}</h1></IonLabel>
         <IonAvatar>
           <img alt="" src='https://ionicframework.com/docs/img/demos/avatar.svg' />
         </IonAvatar>
@@ -109,7 +95,7 @@ const CustomerHomePage: React.FC = () => {
 
               <div >
               <h2>QuickWash Laundry</h2>
-              <p><IonText color='medium'>Mon, Jan 27 - PhP200</IonText></p>
+              <p><IonText color='medium'>PhP200 - Estimated Delivery: Mon, 27 September </IonText></p>
               </div>
             </div>
 
@@ -145,10 +131,7 @@ const CustomerHomePage: React.FC = () => {
           </IonItem>
         }
 
-
       </IonList>
-
-
 
       <IonListHeader className='ion-margin-top'>
         <IonLabel><h2>Your Recent Bookings</h2></IonLabel>

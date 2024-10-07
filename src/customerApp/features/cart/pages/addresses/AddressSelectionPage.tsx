@@ -37,7 +37,7 @@ const AddressSelectionPage : React.FC<AddressSearchPageProps> = ({mode}) => {
   const { data: addresses, isLoading } = useFetchAddresses(searchTerm);
 
   const onAddressClick = (address: Address) => {
-    console.log('OrderId', orderId);
+
     if (createMode){
       history.push({ pathname: `/cart/${orderId}/address/${mode}/new`, state: address });
     } else {

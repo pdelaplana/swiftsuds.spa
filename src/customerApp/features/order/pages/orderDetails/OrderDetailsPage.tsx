@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 
-import { IonButton, IonCol, IonGrid, IonIcon, IonItem, IonLabel, IonList, IonNote, IonRow, IonSpinner, IonText } from '@ionic/react';
+import { IonButton, IonCol, IonGrid, IonIcon, IonItem, IonLabel, IonList, IonNote, IonRow, IonText } from '@ionic/react';
 import { ScrollableContainer } from 'components/layout';
 import PageSpinner from 'components/ui/PageSpinner';
 import { useFetchBooking } from 'hooks/bookings/useFetchBooking';
@@ -45,7 +45,7 @@ const OrderDetailsPage : React.FC = () => {
   }, [booking]);
 
   return (
-    <AuthenticatedPage title={''} showProfileIcon={false} defaultBackButtonHref='/'>
+    <AuthenticatedPage showProfileIcon={false} defaultBackButtonHref='/'>
       <PageSpinner isSpinning={isLoading} />
       { error && <IonText color='danger'>Something went wrong.  Please try again.  </IonText> }
       { booking && !isLoading &&

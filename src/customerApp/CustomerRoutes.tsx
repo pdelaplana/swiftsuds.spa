@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { IonRouterOutlet } from '@ionic/react';
-import UserProfilePage from 'pages/common/user-profile/UserProfilePage';
+import UserProfilePage from 'pages/common/userProfile/UserProfilePage';
 import { Route, Switch } from 'react-router';
 import { animationBuilder } from 'utils/animationBuilder';
 
