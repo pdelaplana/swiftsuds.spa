@@ -1,3 +1,5 @@
+import React from 'react';
+
 import { IonApp } from '@ionic/react';
 import { render, screen } from '@testing-library/react';
 
